@@ -130,6 +130,13 @@ body {
   font-size: 0.875rem;
 }
 
+/* ── Accessibility ── */
+details summary:focus-visible {
+  outline: 2px solid var(--drk);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
 /* ── Animationen ── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -151,6 +158,25 @@ body {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* ── Detail Sheet Animationen ── */
+@keyframes sheetSlideUp {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.drk-sheet-enter {
+  animation: sheetSlideUp 300ms ease-out;
+}
+
+.drk-backdrop-enter {
+  animation: backdropFadeIn 200ms ease-out;
 }
 
 /* ── Status-Badges ── */
@@ -179,4 +205,29 @@ body {
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+/* ── Print Styles ── */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .drk-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+  }
+
+  .drk-btn-primary,
+  .drk-btn-secondary {
+    display: none !important;
+  }
 }
