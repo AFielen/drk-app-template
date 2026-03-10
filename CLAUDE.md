@@ -4,6 +4,8 @@
 
 Dieses Repository ist das offizielle Starter-Template für alle DRK-Digitalisierungstools, entwickelt vom DRK Kreisverband StädteRegion Aachen e.V. Jede neue App wird aus diesem Template erstellt und folgt den hier definierten Konventionen.
 
+**Infrastruktur-Richtlinien:** Siehe `INFRASTRUCTURE.md` für den verbindlichen DSGVO-Goldstandard (erlaubte/verbotene Dienste, Hosting, Datenbank, E-Mail).
+
 **Referenz-Apps (aktueller Stand):**
 - Abstimmung: https://github.com/AFielen/abstimmung
 - Auskunft: https://github.com/AFielen/auskunft
@@ -45,7 +47,7 @@ const nextConfig: NextConfig = {
 };
 ```
 
-**Hosting:** GitHub Pages, Cloudflare Pages, jeder statische Webserver.
+**Hosting:** GitHub Pages, Hetzner (via Caddy), jeder statische Webserver. Siehe INFRASTRUCTURE.md.
 **Kein Docker nötig.**
 
 ### Variante B: Server (Node.js Backend)
@@ -110,6 +112,7 @@ services:
 ```
 app-name/
 ├── CLAUDE.md                    # ← Diese Datei
+├── INFRASTRUCTURE.md            # DSGVO-Goldstandard Infrastruktur
 ├── app/
 │   ├── layout.tsx               # Root-Layout: DRK-Header + Footer
 │   ├── page.tsx                 # Startseite
@@ -364,11 +367,12 @@ Für das exakte Format: READMEs in https://github.com/AFielen/abstimmung und htt
 
 ## DSGVO-Checkliste
 
-- [ ] Keine externen Requests
+- [ ] Keine externen Requests an US-Dienste (siehe INFRASTRUCTURE.md)
 - [ ] Keine Cookies
 - [ ] Keine Datenbank wo vermeidbar
+- [ ] Hosting gemäß Goldstandard (INFRASTRUCTURE.md)
 - [ ] `/impressum` vorhanden
-- [ ] `/datenschutz` vorhanden
+- [ ] `/datenschutz` vorhanden (mit tatsächlich genutzten Diensten)
 - [ ] `/hilfe` vorhanden
 - [ ] `/spenden` vorhanden
 - [ ] XSS-Schutz
