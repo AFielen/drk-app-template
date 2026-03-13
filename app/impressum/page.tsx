@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Impressum – DRK APP_TITEL',
+  description: 'Impressum des DRK Kreisverband StädteRegion Aachen e.V.',
+};
 
 export default function Impressum() {
   return (

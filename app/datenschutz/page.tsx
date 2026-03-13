@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Datenschutz – DRK APP_TITEL',
+  description: 'Datenschutzerklärung – DRK Kreisverband StädteRegion Aachen e.V.',
+};
 
 export default function Datenschutz() {
   return (

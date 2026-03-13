@@ -11,9 +11,19 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 ### Added
 - Print-Styles: Header, Footer und Buttons werden beim Drucken ausgeblendet, Cards brechen nicht um
 - Bottom-Sheet-Animationen (`.drk-sheet-enter`, `.drk-backdrop-enter`) als Template-Pattern
-- Accessibility: `focus-visible`-Outline für `<details>`/`<summary>` Elemente
 - `favicon.svg` (Rotes Kreuz auf rotem Hintergrund) in `public/`
 - `CHANGELOG.md` erstellt
+- Skip-to-Content-Link für Tastaturnavigation im Root-Layout
+- `aria-label` auf allen Header-Buttons und Logo-Link für Screen-Reader
+- `aria-hidden="true"` auf allen dekorativen Emojis und SVG-Icons
+- `focus-visible`-Styles für Links, Buttons und interaktive Elemente (nicht nur `<details>`)
+- `.drk-summary` CSS-Klasse für FAQ-Elemente mit 44px Touch-Target
+- `prefers-reduced-motion` Media-Query: Animationen werden bei Bedarf deaktiviert
+- Per-Page Metadata-Exports für SEO (Impressum, Datenschutz, Hilfe, Spenden, 404)
+- Icon-Komponenten extrahiert: `components/icons/` (HelpIcon, HeartIcon, RedCrossIcon)
+- `app/loading.tsx` Skeleton-Loading-State als Template-Pattern
+- Dark Mode CSS-Vorbereitung via `prefers-color-scheme: dark` (nur CSS-Variablen, kein UI-Toggle)
+- Neue CSS-Variablen: `--bg-secondary`, `--bg-secondary-hover`, `--warning-dark`
 
 ### Changed
 - Alle Pflichtseiten (Impressum, Datenschutz, Hilfe, Spenden, 404) nutzen jetzt konsequent CSS-Variablen statt Tailwind-Hardcoded-Farben (`bg-gray-50`, `text-gray-900` etc.)
@@ -22,6 +32,12 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - Hilfe-Seite: Kontakt-E-Mail auf `digitalisierung@drk-aachen.de` aktualisiert, erweiterte Kontaktbox
 - Header-Subtitle responsive: Langversion ab `sm:`, Kurzversion auf Mobile
 - `tsconfig.json`: `jsx` auf `react-jsx` aktualisiert, `.next/dev/types/**/*.ts` in `include` ergänzt
+- `page.tsx`: Alle hardcoded Tailwind-Farben durch CSS-Variablen ersetzt
+- `hilfe/page.tsx`: FAQ-Summaries nutzen `.drk-summary`-Klasse statt Inline-Hover-Farben
+- `.drk-btn-secondary` und `.drk-badge-warning`: Hardcoded Farbwerte durch CSS-Variablen ersetzt
+- `.drk-input:focus` → `.drk-input:focus-visible` (kein Outline bei Mausklick)
+- Logo im Header: `<img>` → Next.js `<Image>` mit `priority`-Prop
+- `next.config.ts`: `images: { unoptimized: true }` für statischen Export
 
 ---
 
