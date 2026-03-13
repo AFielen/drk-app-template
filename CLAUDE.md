@@ -363,6 +363,13 @@ Jede App MUSS eine README.md haben. Format orientiert sich an den Referenz-Apps 
 
 Für das exakte Format: READMEs in https://github.com/AFielen/abstimmung und https://github.com/AFielen/auskunft als Vorlage nutzen.
 
+**PFLICHT – README aktuell halten:**
+- README.md MUSS aktualisiert werden wenn sich Features, Projektstruktur oder Installation ändern
+- **Feature-Liste** (`## ✨ Features`) bei neuen oder entfernten Features anpassen
+- **"Enthalten"-Tabelle** aktualisieren bei neuen Seiten oder Komponenten
+- **Installationsanleitung** prüfen wenn sich Deployment, Dependencies oder Konfiguration ändern
+- **Tech-Stack** nur anpassen wenn sich Major-Versionen oder Technologien ändern
+
 ---
 
 ## DSGVO-Checkliste
@@ -397,10 +404,20 @@ Für das exakte Format: READMEs in https://github.com/AFielen/abstimmung und htt
 ### Commits
 - `feat:` / `fix:` / `docs:` / `style:` / `refactor:`
 
-Changelog
-WICHTIG: Bei jeder Änderung am Code MUSS die CHANGELOG.md aktualisiert werden.
-Format: Keep a Changelog mit Abschnitten Added, Changed, Fixed, Removed.
-Einträge unter ## [Unreleased] sammeln, bei Release mit Versionsnummer und Datum versehen.
+### Changelog (`CHANGELOG.md`)
+
+**PFLICHT:** Bei **jeder** Code-Änderung MUSS die `CHANGELOG.md` aktualisiert werden.
+
+- Format: [Keep a Changelog](https://keepachangelog.com/de/1.1.0/)
+- Einträge **immer** unter `## [Unreleased]` im passenden Abschnitt:
+  - **Added** — Neue Features, Seiten, Komponenten, CSS-Klassen
+  - **Changed** — Änderungen an bestehendem Verhalten, Refactorings
+  - **Fixed** — Bugfixes
+  - **Removed** — Entfernte Features oder Dateien
+- Einträge **kurz und technisch**: Dateinamen, CSS-Klassen, Funktionen nennen
+- Keine leeren Abschnitte — nur Kategorien nutzen die auch Einträge haben
+- Bei Release: `## [Unreleased]` → `## [X.Y.Z] – YYYY-MM-DD`
+
 ---
 
 ## Kontakt

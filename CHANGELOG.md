@@ -26,6 +26,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - Neue CSS-Variablen: `--bg-secondary`, `--bg-secondary-hover`, `--warning-dark`
 
 ### Changed
+- `CLAUDE.md`: Changelog-Abschnitt als eigene `###`-Section mit detaillierten Regeln formatiert
+- `CLAUDE.md`: README-Pflege-Regel ergänzt (Features, Enthalten-Tabelle, Installation aktuell halten)
 - Alle Pflichtseiten (Impressum, Datenschutz, Hilfe, Spenden, 404) nutzen jetzt konsequent CSS-Variablen statt Tailwind-Hardcoded-Farben (`bg-gray-50`, `text-gray-900` etc.)
 - Impressum vervollständigt: Telefonnummer, Vorstandsname, Umsatzsteuer-ID, Registernummer, Haftungsausschluss
 - Datenschutzerklärung erweitert auf 9 nummerierte Abschnitte (Hosting-Platzhalter, Änderungshinweis etc.)
