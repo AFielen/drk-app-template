@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Unterstützen – DRK APP_TITEL',
+  description: 'Unterstützen Sie das Deutsche Rote Kreuz mit einer Spende.',
+};
 
 export default function Spenden() {
   return (
@@ -6,7 +12,7 @@ export default function Spenden() {
       <div className="max-w-2xl mx-auto space-y-6">
         {/* ── Danke Box ── */}
         <div className="drk-card drk-fade-in text-center">
-          <div className="text-5xl mb-4">❤️</div>
+          <div className="text-5xl mb-4" aria-hidden="true">❤️</div>
           <h2 className="text-2xl font-bold mb-3" style={{ color: 'var(--text)' }}>
             Vielen Dank für Ihre Nutzung!
           </h2>
@@ -48,7 +54,7 @@ export default function Spenden() {
                 className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
                 style={{ background: 'var(--drk-bg)' }}
               >
-                <span className="text-lg">🌐</span>
+                <span className="text-lg" aria-hidden="true">🌐</span>
               </div>
               <div>
                 <p className="font-semibold" style={{ color: 'var(--text)' }}>
@@ -74,7 +80,7 @@ export default function Spenden() {
                 className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
                 style={{ background: 'var(--drk-bg)' }}
               >
-                <span className="text-lg">🏦</span>
+                <span className="text-lg" aria-hidden="true">🏦</span>
               </div>
               <div>
                 <p className="font-semibold" style={{ color: 'var(--text)' }}>
@@ -97,7 +103,7 @@ export default function Spenden() {
                 className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0"
                 style={{ background: 'var(--drk-bg)' }}
               >
-                <span className="text-lg">🙋</span>
+                <span className="text-lg" aria-hidden="true">🙋</span>
               </div>
               <div>
                 <p className="font-semibold" style={{ color: 'var(--text)' }}>
@@ -127,7 +133,7 @@ export default function Spenden() {
           style={{ borderLeft: '4px solid var(--info)' }}
         >
           <div className="flex gap-3">
-            <span className="text-xl shrink-0">💻</span>
+            <span className="text-xl shrink-0" aria-hidden="true">💻</span>
             <div>
               <p className="text-sm font-semibold" style={{ color: 'var(--text)' }}>
                 Open Source

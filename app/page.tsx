@@ -1,18 +1,18 @@
 export default function Home() {
   return (
-    <div className="bg-gray-50 min-h-[calc(100vh-theme(spacing.16))] py-8 px-4">
+    <div className="min-h-[calc(100vh-theme(spacing.16))] py-8 px-4" style={{ background: 'var(--bg)' }}>
       <div className="max-w-4xl mx-auto space-y-6">
         {/* ── Hero Box ── */}
         <div className="drk-card drk-fade-in">
           <div className="flex items-start gap-4">
-            <div className="bg-[#e30613]/10 p-3 rounded-xl shrink-0">
-              <span className="text-3xl">🛡️</span>
+            <div className="p-3 rounded-xl shrink-0" style={{ background: 'var(--drk-bg)' }}>
+              <span className="text-3xl" aria-hidden="true">🛡️</span>
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--text)' }}>
                 APP_TITEL
               </h2>
-              <p className="text-gray-600">
+              <p style={{ color: 'var(--text-light)' }}>
                 APP_BESCHREIBUNG – Einfach, digital, DSGVO-konform.
               </p>
             </div>
@@ -21,10 +21,10 @@ export default function Home() {
 
         {/* ── Content Box ── */}
         <div className="drk-card drk-slide-up">
-          <h3 className="text-lg font-bold text-gray-900 mb-4">
+          <h3 className="text-lg font-bold mb-4" style={{ color: 'var(--text)' }}>
             Loslegen
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="mb-6" style={{ color: 'var(--text-light)' }}>
             Hier beginnt die eigentliche App-Logik. Diese Seite durch den
             tatsächlichen Inhalt ersetzen.
           </p>
@@ -34,12 +34,12 @@ export default function Home() {
         </div>
 
         {/* ── Info Box (optional) ── */}
-        <div className="drk-card border-l-4 border-[#17a2b8] bg-blue-50/50">
+        <div className="drk-card border-l-4" style={{ borderLeftColor: 'var(--info)', background: 'var(--info-bg)' }}>
           <div className="flex gap-3">
-            <span className="text-xl shrink-0">ℹ️</span>
+            <span className="text-xl shrink-0" aria-hidden="true">ℹ️</span>
             <div>
-              <p className="text-sm font-semibold text-gray-800">Hinweis</p>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm font-semibold" style={{ color: 'var(--text)' }}>Hinweis</p>
+              <p className="text-sm mt-1" style={{ color: 'var(--text-light)' }}>
                 Dies ist ein Template. Passen Sie diese Seite an die
                 Anforderungen Ihrer App an.
               </p>

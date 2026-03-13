@@ -26,6 +26,13 @@
   --info: #17a2b8;
   --info-bg: #eff6ff;
 
+  /* Sekundär-Buttons */
+  --bg-secondary: #e9ecef;
+  --bg-secondary-hover: #dee2e6;
+
+  /* Warning Dark */
+  --warning-dark: #b45309;
+
   /* Schatten */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -85,7 +92,7 @@ body {
 }
 
 .drk-btn-secondary {
-  background-color: #e9ecef;
+  background-color: var(--bg-secondary);
   color: var(--text);
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -99,7 +106,7 @@ body {
 }
 
 .drk-btn-secondary:hover {
-  background-color: #dee2e6;
+  background-color: var(--bg-secondary-hover);
 }
 
 /* ── DRK Form-Inputs ── */
@@ -112,7 +119,7 @@ body {
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 
-.drk-input:focus {
+.drk-input:focus-visible {
   outline: none;
   border-color: var(--drk);
   box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.15);
@@ -131,10 +138,35 @@ body {
 }
 
 /* ── Accessibility ── */
+a:focus-visible,
+button:focus-visible,
+.drk-btn-primary:focus-visible,
+.drk-btn-secondary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--drk);
+  outline-offset: 2px;
+}
+
 details summary:focus-visible {
   outline: 2px solid var(--drk);
   outline-offset: 2px;
   border-radius: var(--radius);
+}
+
+/* ── FAQ Summary Touch-Target ── */
+.drk-summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 150ms ease;
+  color: var(--text);
+}
+
+.drk-summary:hover {
+  color: var(--drk);
 }
 
 /* ── Animationen ── */
@@ -179,6 +211,15 @@ details summary:focus-visible {
   animation: backdropFadeIn 200ms ease-out;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .drk-fade-in,
+  .drk-slide-up,
+  .drk-sheet-enter,
+  .drk-backdrop-enter {
+    animation: none;
+  }
+}
+
 /* ── Status-Badges ── */
 .drk-badge-success {
   background: var(--success-bg);
@@ -191,7 +232,7 @@ details summary:focus-visible {
 
 .drk-badge-warning {
   background: var(--warning-bg);
-  color: #b45309;
+  color: var(--warning-dark);
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
@@ -229,5 +270,27 @@ details summary:focus-visible {
   .drk-btn-primary,
   .drk-btn-secondary {
     display: none !important;
+  }
+}
+
+/* ── Dark Mode Vorbereitung ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e5e7eb;
+    --text-light: #9ca3af;
+    --text-muted: #6b7280;
+    --bg: #111827;
+    --bg-card: #1f2937;
+    --border: #374151;
+    --bg-secondary: #374151;
+    --bg-secondary-hover: #4b5563;
+    --drk-bg: #2d1215;
+    --info-bg: #1e293b;
+    --success-bg: #0f2419;
+    --warning-bg: #2d2305;
+    --warning-dark: #fbbf24;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
   }
 }
