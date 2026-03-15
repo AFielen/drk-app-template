@@ -420,6 +420,18 @@ Für das exakte Format: READMEs in https://github.com/AFielen/abstimmung und htt
 
 ---
 
+## Skills
+
+### PostgreSQL & Drizzle (`/drk-postgres`)
+
+Für alle Apps mit Variante B (Server + Datenbank).
+Aufruf: `/drk-postgres [thema]` — z.B. `/drk-postgres schema`, `/drk-postgres rls`, `/drk-postgres migration`
+
+Referenz-Dateien: `skills/drk-postgres-skill/references/`
+Skill-Definition: `.claude/skills/drk-postgres/SKILL.md`
+
+---
+
 ## Kontakt
 
 DRK Kreisverband StädteRegion Aachen e.V.
