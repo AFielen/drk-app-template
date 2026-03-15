@@ -9,6 +9,11 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- `ThemeToggle`-Komponente (`components/ThemeToggle.tsx`): Light/Dark/System-Umschaltung mit Sonne/Mond/Monitor-Icons
+- `Header`-Komponente (`components/Header.tsx`): Client-Component mit ThemeToggle, responsive Padding und Textgrößen
+- Theme-Persistence-Script im `<head>` verhindert Flash of unstyled content beim Laden
+- Neue CSS-Variablen: `--warning-border`, `--warning-text`, `--info-border`, `--info-text`, `--error`, `--error-bg`, `--error-border`, `--error-text`
+- Dark-Mode Input/Select-Styling für `html.dark` und System-Fallback
 - Print-Styles: Header, Footer und Buttons werden beim Drucken ausgeblendet, Cards brechen nicht um
 - Bottom-Sheet-Animationen (`.drk-sheet-enter`, `.drk-backdrop-enter`) als Template-Pattern
 - `favicon.svg` (Rotes Kreuz auf rotem Hintergrund) in `public/`
@@ -26,6 +31,10 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - Neue CSS-Variablen: `--bg-secondary`, `--bg-secondary-hover`, `--warning-dark`
 
 ### Changed
+- Dark Mode von `@media (prefers-color-scheme: dark) :root` auf class-basiert (`html.dark`) mit System-Fallback (`html:not(.light)`)
+- Header responsive verbessert: `px-3 sm:px-6`, `text-[1.1rem] sm:text-[1.4rem]`, `min-w-0` + `truncate` für Overflow
+- Header aus `layout.tsx` in eigene Client-Component `Header.tsx` extrahiert (für ThemeToggle)
+- `<html>` Tag mit `suppressHydrationWarning` für Theme-Script-Kompatibilität
 - `CLAUDE.md`: Changelog-Abschnitt als eigene `###`-Section mit detaillierten Regeln formatiert
 - `CLAUDE.md`: README-Pflege-Regel ergänzt (Features, Enthalten-Tabelle, Installation aktuell halten)
 - Alle Pflichtseiten (Impressum, Datenschutz, Hilfe, Spenden, 404) nutzen jetzt konsequent CSS-Variablen statt Tailwind-Hardcoded-Farben (`bg-gray-50`, `text-gray-900` etc.)

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { HelpIcon, HeartIcon, RedCrossIcon } from '@/components/icons';
+import { RedCrossIcon } from '@/components/icons';
+import Header from '@/components/Header';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -12,7 +12,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('drk-theme');if(t==='dark')document.documentElement.classList.add('dark');else if(t==='light')document.documentElement.classList.add('light');}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         {/* ── Skip-to-Content (Barrierefreiheit) ── */}
         <a
@@ -24,39 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
 
         {/* ── DRK Header ── */}
-        <header
-          className="flex items-center justify-between gap-3 px-6 py-4"
-          style={{ background: '#e30613', color: '#fff' }}
-        >
-          <Link href="/" className="flex items-center gap-3" aria-label="Zur Startseite">
-            <Image src="/logo.png" alt="DRK Logo" width={42} height={42} priority />
-            <div>
-              <h1 className="text-[1.4rem] font-bold leading-tight">APP_TITEL</h1>
-              <div className="text-[0.8rem] opacity-85 hidden sm:block">APP_UNTERTITEL</div>
-              <div className="text-[0.8rem] opacity-85 sm:hidden">APP_UNTERTITEL_KURZ</div>
-            </div>
-          </Link>
-
-          {/* Rechte Seite: Spenden + Hilfe */}
-          <div className="flex items-center gap-1">
-            <Link
-              href="/spenden"
-              className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-colors"
-              title="Unterstützen"
-              aria-label="Unterstützen"
-            >
-              <HeartIcon />
-            </Link>
-            <Link
-              href="/hilfe"
-              className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-colors"
-              title="Hilfe"
-              aria-label="Hilfe"
-            >
-              <HelpIcon />
-            </Link>
-          </div>
-        </header>
+        <Header />
 
         {/* ── Main Content ── */}
         <main id="main-content" className="flex-1">{children}</main>
