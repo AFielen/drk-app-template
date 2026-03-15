@@ -9,6 +9,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- Claude Code Skill `/drk-postgres` für PostgreSQL 16 & Drizzle ORM Best Practices (`.claude/skills/drk-postgres/SKILL.md`)
+- Skills-Abschnitt in `CLAUDE.md` mit Verweis auf `/drk-postgres` Slash-Command
 - `ThemeToggle`-Komponente (`components/ThemeToggle.tsx`): Light/Dark/System-Umschaltung mit Sonne/Mond/Monitor-Icons
 - `Header`-Komponente (`components/Header.tsx`): Client-Component mit ThemeToggle, responsive Padding und Textgrößen
 - Theme-Persistence-Script im `<head>` verhindert Flash of unstyled content beim Laden
