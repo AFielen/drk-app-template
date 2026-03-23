@@ -502,7 +502,7 @@ Orchestrierung von Daten-/Analytics-Aufgaben. Siehe `.claude/skills/data-workflo
 Für alle Apps mit Variante B (Server + Datenbank).
 Aufruf: `/drk-postgres [thema]` — z.B. `/drk-postgres schema`, `/drk-postgres rls`, `/drk-postgres migration`
 
-Referenz-Dateien: `skills/drk-postgres-skill/references/`
+Referenz-Dateien: `.claude/skills/drk-postgres/references/`
 Skill-Definition: `.claude/skills/drk-postgres/SKILL.md`
 
 ---
