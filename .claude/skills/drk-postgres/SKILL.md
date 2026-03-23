@@ -13,13 +13,13 @@ Stack: Next.js 16 + Drizzle ORM + PostgreSQL 16 (Docker) + Hetzner.
 
 ## Aufgabe
 
-Lies die zum Thema passenden Referenz-Dateien aus `skills/drk-postgres-skill/references/` und wende die Best Practices auf das aktuelle Projekt an.
+Lies die zum Thema passenden Referenz-Dateien aus `references/` und wende die Best Practices auf das aktuelle Projekt an.
 
 Wenn `$ARGUMENTS` angegeben ist, fokussiere auf das genannte Thema. Ohne Argumente: Gib eine Übersicht der verfügbaren Themen.
 
 ## Referenz-Dateien
 
-Die `skills/drk-postgres-skill/references/`-Dateien enthalten konkrete SQL- und Drizzle-Patterns.
+Die `references/`-Dateien enthalten konkrete SQL- und Drizzle-Patterns.
 Jede Datei ist nach dem Schema `kategorie-thema.md` benannt.
 
 ### Kategorien (nach Priorität)
