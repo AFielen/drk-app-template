@@ -17,6 +17,7 @@ APP_BESCHREIBUNG
 - **Kein Backend** / **Minimales Backend** – [Begründung]
 - **localStorage** für [Zweck]
 - **Docker-Deployment** auf [Zielplattform]
+- **Design-Variante** – `default` (freundlich) oder `advisory` (autoritativ, NIS2-Style) via `NEXT_PUBLIC_DRK_DESIGN`. Build-Time festgelegt, siehe README → "Design-Varianten".
 
 ## Offene Punkte
 - [ ] ...
