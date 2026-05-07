@@ -1,5 +1,17 @@
 @import 'tailwindcss';
 
+/* ── Tailwind-Theme: Fonts ──
+ * Standard nutzt System-Fonts — offline-buildable, keine externen Requests.
+ * Möchte ein Fork eigene Webfonts (z.B. Instrument Sans, Source Serif 4)
+ * via `next/font` einsetzen, kann er hier `var(--font-sans)` etc. einsetzen
+ * und die Variable in `app/layout.tsx` ans <html>-Element hängen.
+ */
+@theme inline {
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Cambria, 'Source Serif 4', serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, 'JetBrains Mono', monospace;
+}
+
 /* ── DRK Design Tokens ── */
 :root {
   /* Primärfarbe */
@@ -359,4 +371,91 @@ html.dark select {
     background: var(--bg-card);
     color: var(--text);
   }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   ADVISORY-VARIANTE
+   Aktiv via NEXT_PUBLIC_DRK_DESIGN=advisory (Build-Time-ENV).
+   Layout setzt dann <html data-design="advisory">.
+   Warme Creme/Braun-Palette + Sienna-Sekundärakzent ("Henry") für
+   Apps mit autoritativem/beratendem Charakter (z.B. Compliance-Tools).
+   Portiert aus dem NIS-2-Manager (DRK).
+   ────────────────────────────────────────────────────────────────── */
+html[data-design="advisory"] {
+  /* Warme Neutrals */
+  --paper: #faf9f7;
+  --surface: #ffffff;
+  --ink: #1a1917;
+  --ink-2: #5c574f;
+  --ink-3: #8a857c;
+  --line: #eae7e2;
+  --line-2: #d9d4cb;
+
+  /* Sekundär-Akzentfarbe (Sienna, NICHT-rot, damit nicht mit Status/CTA kollidiert) */
+  --henry: #a0411a;
+  --henry-bg: #fbf3ed;
+
+  /* Legacy-Aliase warm überschreiben — bestehende .drk-* Klassen ziehen automatisch nach */
+  --text: var(--ink);
+  --text-light: var(--ink-2);
+  --text-muted: var(--ink-3);
+  --bg: var(--paper);
+  --bg-card: var(--surface);
+  --border: var(--line);
+
+  /* Schatten warm-getönt (Tinte statt Schwarz) */
+  --shadow-sm: 0 1px 2px rgba(31, 27, 18, 0.04);
+  --shadow: 0 4px 12px rgba(31, 27, 18, 0.06);
+  --shadow-lg: 0 12px 32px rgba(31, 27, 18, 0.08);
+}
+
+/* Advisory + Dark: warmes Schwarz statt kühles Slate */
+html.dark[data-design="advisory"] {
+  --paper: #14130f;
+  --surface: #1c1b17;
+  --ink: #f2efea;
+  --ink-2: #b8b2a6;
+  --ink-3: #8a857c;
+  --line: #2a2823;
+  --line-2: #3a3730;
+  --henry: #c4734a;
+  --henry-bg: #221c16;
+  --bg-secondary: #2a2823;
+  --bg-secondary-hover: #3a3730;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Advisory-Callout: weicher Akzent-Block (Hero-Iconbox, Self-Check-Hinweise) */
+.drk-advisory-callout {
+  background: var(--henry-bg);
+  border-left: 4px solid var(--henry);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  color: var(--text);
+}
+
+/* Advisory-Stempel: rotierter Aufkleber-Look (Authentizität, "Genehmigt"-Stempel etc.) */
+.drk-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-serif, Georgia, serif);
+  user-select: none;
+}
+.drk-stamp__label {
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 2.5px solid currentColor;
+  border-radius: 2px;
+}
+.drk-stamp__meta {
+  margin-top: 0.25rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.05em;
 }

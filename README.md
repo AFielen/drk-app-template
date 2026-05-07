@@ -14,6 +14,7 @@ Dieses Repository ist der Ausgangspunkt für neue Web-Apps im DRK-Kontext. Es en
 
 * **DRK-Header + Footer** — Rote Leiste mit Logo, Hilfe- und Spenden-Icons
 * **Box-basiertes Layout** — Konsistente Karten-Optik auf grauem Hintergrund
+* **Zwei Design-Varianten** — `default` (freundlich) oder `advisory` (autoritativ/Berater, NIS2-Style)
 * **Zweisprachig (DE/EN)** — i18n-System von Tag 1
 * **Pflichtseiten** — Impressum, Datenschutz, Hilfe, Spenden fertig eingebaut
 * **CLAUDE.md** — Claude Code kennt sofort alle Konventionen
@@ -50,6 +51,37 @@ claude
 4. **`lib/i18n.ts`** mit app-spezifischen Übersetzungen erweitern
 5. **`next.config.ts`** → `'export'` (statisch) oder `'standalone'` (Server)
 6. **README.md** nach dem Pflicht-Format anpassen (siehe CLAUDE.md)
+
+## 🎨 Design-Varianten
+
+Das Template liefert zwei voll ausgearbeitete Designs. Welches gerendert wird, entscheidet die Build-Time-ENV `NEXT_PUBLIC_DRK_DESIGN`:
+
+| Variante | ENV | Charakter | Wann nutzen? |
+|---|---|---|---|
+| `default` | leer / `default` | Freundlich, klar, kühles Grau | Anmelde-Tools, Spendenseiten, Listen-Apps |
+| `advisory` | `advisory` | Autoritativ, dokumentarisch, warmes Creme + Sienna-Akzent, Serif-Headings | Compliance-Tools, Audits, Berater-Apps (z.B. NIS-2 Manager) |
+
+**Aktivieren:**
+
+```bash
+# Default (oder ENV weglassen)
+npm run build && npm run start
+
+# Advisory
+NEXT_PUBLIC_DRK_DESIGN=advisory npm run build && NEXT_PUBLIC_DRK_DESIGN=advisory npm run start
+```
+
+**Komponenten:** Beide Varianten teilen sich `Header`/`Footer`-Skelett, aber Advisory bringt zusätzlich:
+
+* `components/HeaderAdvisory.tsx` — Serif-Titel, kompakter Subtitle, ohne Donate-Icon
+* `components/FooterAdvisory.tsx` — Serif-Wortmarke mit `tracking-[0.18em]`
+* `components/ui/InlineHint.tsx` — 4 Hinweis-Varianten (`info`, `tip`, `warning`, `henry`), optional dismissible mit `localStorage`-Persistenz
+* `components/ui/Stamp.tsx` — Rotierter Aufkleber-Look für Authentizität-Marken
+* `components/icons/HenryGlyph.tsx` — Sekundär-Glyphe für KI-/Berater-Inhalte
+
+Die Token-Sets liegen beide in `app/globals.css` und werden über `html[data-design="advisory"]` aktiviert. Bestehende `.drk-card`/`.drk-btn-*`/`.drk-input`-Klassen ziehen automatisch nach (Aliase: `--text` → `--ink`, `--bg` → `--paper`, `--border` → `--line`).
+
+**Live-Demo der Komponenten:** `/design-demo` (zeigt die Komponenten in der aktiven Variante).
 
 ## 🛠️ Tech-Stack
 

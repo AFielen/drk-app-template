@@ -9,6 +9,21 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- **Design-Variante `advisory`** (autoritativ/Berater-Look, portiert aus dem [NIS-2 Manager](https://github.com/AFielen/nis2-manager)): Build-Time aktivierbar via `NEXT_PUBLIC_DRK_DESIGN=advisory`
+  - Warme Token-Palette in `app/globals.css` unter `html[data-design="advisory"]`: `--paper`, `--surface`, `--ink`, `--ink-2`, `--ink-3`, `--line`, `--line-2`, `--henry` (Sienna `#a0411a`), `--henry-bg`
+  - Legacy-Aliase (`--text` → `--ink`, `--bg` → `--paper`, `--border` → `--line`) — bestehende `.drk-*`-Klassen ziehen automatisch nach
+  - Warm-getönte Schatten (`rgba(31, 27, 18, …)` statt schwarz)
+  - Neue Klassen: `.drk-advisory-callout`, `.drk-stamp` (mit `__label`/`__meta`)
+  - `@theme inline`-Block für `--font-sans`/`--font-serif`/`--font-mono` (next/font)
+- `lib/design.ts`: `DESIGN`-Konstante & `Design`-Typ als Single-Source-of-Truth für die ENV-Auswertung
+- `components/HeaderAdvisory.tsx` — Serif-Titel, kompakter Subtitle, ohne Donate-Icon
+- `components/FooterDefault.tsx`, `components/FooterAdvisory.tsx` — extrahiert aus `layout.tsx` für saubere Variante-Auswahl
+- `components/ui/InlineHint.tsx` (+ `HintDetails`-Sub-Export) — 4 Hinweis-Varianten (`info`, `tip`, `warning`, `henry`), optional dismissible mit `localStorage`-Persistenz, ARIA-konform
+- `components/ui/Stamp.tsx` — Rotierter Aufkleber-Look mit Serif-Label und optionaler Mono-Meta-Zeile
+- `components/icons/HenryGlyph.tsx` — Sekundär-Glyphe für KI-/Berater-Inhalte
+- `app/design-demo/page.tsx` — zeigt alle Advisory-Komponenten in der aktiven Variante
+- `@theme inline`-Block mit `--font-sans`/`--font-serif`/`--font-mono` (System-Fonts, offline-buildable). Forks können hier `next/font/google` einsetzen, um z.B. Source Serif 4 / Instrument Sans / JetBrains Mono zu laden — wie es der NIS-2 Manager tut.
+- Neue Dependency: `lucide-react` (Icons für `InlineHint`)
 - Claude Code Skill `/drk-postgres` für PostgreSQL 16 & Drizzle ORM Best Practices (`.claude/skills/drk-postgres/SKILL.md`)
 - Skills-Abschnitt in `CLAUDE.md` mit Verweis auf `/drk-postgres` Slash-Command
 - `ThemeToggle`-Komponente (`components/ThemeToggle.tsx`): Light/Dark/System-Umschaltung mit Sonne/Mond/Monitor-Icons
@@ -33,6 +48,8 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 - Neue CSS-Variablen: `--bg-secondary`, `--bg-secondary-hover`, `--warning-dark`
 
 ### Changed
+- `app/layout.tsx` wählt Header und Footer abhängig von `DESIGN` (Build-Time-ENV) — Default-Pfad bleibt unverändert
+- `<html>` bekommt `data-design`-Attribut, damit CSS-Token-Overrides ohne Runtime-Cost greifen
 - Dark Mode von `@media (prefers-color-scheme: dark) :root` auf class-basiert (`html.dark`) mit System-Fallback (`html:not(.light)`)
 - Header responsive verbessert: `px-3 sm:px-6`, `text-[1.1rem] sm:text-[1.4rem]`, `min-w-0` + `truncate` für Overflow
 - Header aus `layout.tsx` in eigene Client-Component `Header.tsx` extrahiert (für ThemeToggle)
